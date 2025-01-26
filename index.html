@@ -475,19 +475,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const nameForInputs = `question_${qData.questionId}`;
 
     qData.answers.forEach((ans, ansIndex) => {
-      const answerWrapper = document.createElement("div");
-      answerWrapper.classList.add("form-check", "mb-1");
-
       const input = document.createElement("input");
       input.classList.add("form-check-input");
       input.type = inputType;
       input.name = nameForInputs;
       input.value = ansIndex;
+      input.id = `question_${qData.questionId}_answer_${ansIndex}`; // Dodaj unikalny identyfikator
 
       const label = document.createElement("label");
       label.classList.add("form-check-label");
       label.textContent = ans.text;
+      label.htmlFor = input.id; // Powiąż etykietę z inputem
 
+      const answerWrapper = document.createElement("div");
+      answerWrapper.classList.add("form-check", "mb-1");
       answerWrapper.appendChild(input);
       answerWrapper.appendChild(label);
       answersContainer.appendChild(answerWrapper);
