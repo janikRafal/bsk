@@ -541,7 +541,7 @@
           const inputType = qData.type === "multiple" ? "checkbox" : "radio";
           const nameForInputs = `question_${qData.questionId}`;
 
-          qData.answers.forEach((ans, ansIndex) => {
+          shuffleArray(qData.answers).forEach((ans, ansIndex) => {
             const input = document.createElement("input");
             input.classList.add("form-check-input");
             input.type = inputType;
